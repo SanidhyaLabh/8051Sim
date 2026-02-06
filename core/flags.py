@@ -98,14 +98,38 @@ class Flags:
             self._flags[keys] = _psw_binary[7 - i]
         return True
 
-    P = property(fget=lambda self: self._flags.get("P"), fset=lambda self, val: self._flags.__setitem__("P", val))
-    _UD = property(fget=lambda self: self._flags.get("_UD"), fset=lambda self, val: self._flags.__setitem__("_UD", val))
-    OV = property(fget=lambda self: self._flags.get("OV"), fset=lambda self, val: self._flags.__setitem__("OV", val))
-    RS0 = property(fget=lambda self: self._flags.get("RS0"), fset=lambda self, val: self._flags.__setitem__("RS0", val))
-    RS1 = property(fget=lambda self: self._flags.get("RS1"), fset=lambda self, val: self._flags.__setitem__("RS1", val))
-    F0 = property(fget=lambda self: self._flags.get("F0"), fset=lambda self, val: self._flags.__setitem__("F0", val))
-    AC = property(fget=lambda self: self._flags.get("AC"), fset=lambda self, val: self._flags.__setitem__("AC", val))
-    CY = property(fget=lambda self: self._flags.get("CY"), fset=lambda self, val: self._flags.__setitem__("CY", val))
+    P = property(
+        fget=lambda self: self._flags.get("P"),
+        fset=lambda self, val: self._flags.__setitem__("P", val),
+    )
+    _UD = property(
+        fget=lambda self: self._flags.get("_UD"),
+        fset=lambda self, val: self._flags.__setitem__("_UD", val),
+    )
+    OV = property(
+        fget=lambda self: self._flags.get("OV"),
+        fset=lambda self, val: self._flags.__setitem__("OV", val),
+    )
+    RS0 = property(
+        fget=lambda self: self._flags.get("RS0"),
+        fset=lambda self, val: self._flags.__setitem__("RS0", val),
+    )
+    RS1 = property(
+        fget=lambda self: self._flags.get("RS1"),
+        fset=lambda self, val: self._flags.__setitem__("RS1", val),
+    )
+    F0 = property(
+        fget=lambda self: self._flags.get("F0"),
+        fset=lambda self, val: self._flags.__setitem__("F0", val),
+    )
+    AC = property(
+        fget=lambda self: self._flags.get("AC"),
+        fset=lambda self, val: self._flags.__setitem__("AC", val),
+    )
+    CY = property(
+        fget=lambda self: self._flags.get("CY"),
+        fset=lambda self, val: self._flags.__setitem__("CY", val),
+    )
 
     pass
 
