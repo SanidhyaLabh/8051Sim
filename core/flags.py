@@ -68,8 +68,7 @@ class Flags:
         return True
 
     def inspect(self):
-        return textwrap.dedent(
-            f"""
+        return textwrap.dedent(f"""
             Flags
             -----
             "P" \t: {self.P}
@@ -80,8 +79,7 @@ class Flags:
             "F0" \t: {self.F0}
             "AC" \t: {self.AC}
             "CY" \t: {self.CY}
-            """
-        )
+            """)
 
     @property
     def PSW(self):

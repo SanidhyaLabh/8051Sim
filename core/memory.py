@@ -319,8 +319,7 @@ class ProgramStatusWord:
 
     def inspect(self) -> str:
         binary_data = self._PSW.bin()
-        return textwrap.dedent(
-            f"""
+        return textwrap.dedent(f"""
             Flags
             -----
             "P" \t: {bool(int(binary_data[9]))}
@@ -331,8 +330,7 @@ class ProgramStatusWord:
             "F0" \t: {bool(int(binary_data[4]))}
             "AC" \t: {bool(int(binary_data[3]))}
             "CY" \t: {bool(int(binary_data[2]))}
-            """
-        )
+            """)
 
     def get(self, _flag):
         return self.flags()[_flag]
@@ -586,8 +584,7 @@ class SuperMemory:
         )
 
     def _reg_inspect(self):
-        return textwrap.dedent(
-            f"""
+        return textwrap.dedent(f"""
             Registers
             ---------
             A/PSW \t= {self.A} {self.PSW._PSW}
@@ -609,8 +606,7 @@ class SuperMemory:
             {self._general_purpose_registers["00"]["R6"]} \t {self._general_purpose_registers["01"]["R6"]} \t {self._general_purpose_registers["10"]["R6"]} \t {self._general_purpose_registers["11"]["R6"]}
             {self._general_purpose_registers["00"]["R7"]} \t {self._general_purpose_registers["01"]["R7"]} \t {self._general_purpose_registers["10"]["R7"]} \t {self._general_purpose_registers["11"]["R7"]}
 
-            """
-        )
+            """)
 
     def _registers_todict(self):
         return {
