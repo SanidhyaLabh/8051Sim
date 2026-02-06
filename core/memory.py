@@ -597,14 +597,46 @@ class SuperMemory:
             --------------
             00 \t 01 \t 10 \t 11
             -- \t -- \t -- \t --
-            {self._general_purpose_registers["00"]["R0"]} \t {self._general_purpose_registers["01"]["R0"]} \t {self._general_purpose_registers["10"]["R0"]} \t {self._general_purpose_registers["11"]["R0"]}
-            {self._general_purpose_registers["00"]["R1"]} \t {self._general_purpose_registers["01"]["R1"]} \t {self._general_purpose_registers["10"]["R1"]} \t {self._general_purpose_registers["11"]["R1"]}
-            {self._general_purpose_registers["00"]["R2"]} \t {self._general_purpose_registers["01"]["R2"]} \t {self._general_purpose_registers["10"]["R2"]} \t {self._general_purpose_registers["11"]["R2"]}
-            {self._general_purpose_registers["00"]["R3"]} \t {self._general_purpose_registers["01"]["R3"]} \t {self._general_purpose_registers["10"]["R3"]} \t {self._general_purpose_registers["11"]["R3"]}
-            {self._general_purpose_registers["00"]["R4"]} \t {self._general_purpose_registers["01"]["R4"]} \t {self._general_purpose_registers["10"]["R4"]} \t {self._general_purpose_registers["11"]["R4"]}
-            {self._general_purpose_registers["00"]["R5"]} \t {self._general_purpose_registers["01"]["R5"]} \t {self._general_purpose_registers["10"]["R5"]} \t {self._general_purpose_registers["11"]["R5"]}
-            {self._general_purpose_registers["00"]["R6"]} \t {self._general_purpose_registers["01"]["R6"]} \t {self._general_purpose_registers["10"]["R6"]} \t {self._general_purpose_registers["11"]["R6"]}
-            {self._general_purpose_registers["00"]["R7"]} \t {self._general_purpose_registers["01"]["R7"]} \t {self._general_purpose_registers["10"]["R7"]} \t {self._general_purpose_registers["11"]["R7"]}
+            {self._general_purpose_registers["00"]["R0"]} \t '
+            f'{self._general_purpose_registers["01"]["R0"]} \t '
+            f'{self._general_purpose_registers["10"]["R0"]} \t '
+            f'{self._general_purpose_registers["11"]["R0"]}'
+        )
+            {self._general_purpose_registers["00"]["R1"]} \t '
+            f'{self._general_purpose_registers["01"]["R1"]} \t '
+            f'{self._general_purpose_registers["10"]["R1"]} \t '
+            f'{self._general_purpose_registers["11"]["R1"]}'
+        )
+            {self._general_purpose_registers["00"]["R2"]} \t '
+            f'{self._general_purpose_registers["01"]["R2"]} \t '
+            f'{self._general_purpose_registers["10"]["R2"]} \t '
+            f'{self._general_purpose_registers["11"]["R2"]}'
+        )
+            {self._general_purpose_registers["00"]["R3"]} \t '
+            f'{self._general_purpose_registers["01"]["R3"]} \t '
+            f'{self._general_purpose_registers["10"]["R3"]} \t '
+            f'{self._general_purpose_registers["11"]["R3"]}'
+        )
+            {self._general_purpose_registers["00"]["R4"]} \t '
+            f'{self._general_purpose_registers["01"]["R4"]} \t '
+            f'{self._general_purpose_registers["10"]["R4"]} \t '
+            f'{self._general_purpose_registers["11"]["R4"]}'
+        )
+            {self._general_purpose_registers["00"]["R5"]} \t '
+            f'{self._general_purpose_registers["01"]["R5"]} \t '
+            f'{self._general_purpose_registers["10"]["R5"]} \t '
+            f'{self._general_purpose_registers["11"]["R5"]}'
+        )
+            {self._general_purpose_registers["00"]["R6"]} \t '
+            f'{self._general_purpose_registers["01"]["R6"]} \t '
+            f'{self._general_purpose_registers["10"]["R6"]} \t '
+            f'{self._general_purpose_registers["11"]["R6"]}'
+        )
+            {self._general_purpose_registers["00"]["R7"]} \t '
+            f'{self._general_purpose_registers["01"]["R7"]} \t '
+            f'{self._general_purpose_registers["10"]["R7"]} \t '
+            f'{self._general_purpose_registers["11"]["R7"]}'
+        )
 
             """)
 
