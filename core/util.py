@@ -39,10 +39,9 @@ def ishex(data):
     """
     Helper method to check if the value is hex or not
     """
-    if (
-        bool(re.fullmatch(r"^0[x|X][0-9a-fA-F]+", data))
-        or bool(re.fullmatch(r"^[0-9a-fA-F]+[h|H]$", data))
-        or bool(re.fullmatch(r"^[0-9a-fA-F]+", data))
+    if (bool(re.fullmatch(r"^0[x|X][0-9a-fA-F]+", data)) or
+            bool(re.fullmatch(r"^[0-9a-fA-F]+[h|H]$", data)) or
+            bool(re.fullmatch(r"^[0-9a-fA-F]+", data))
     ):
         return True
     return False
