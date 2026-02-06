@@ -166,17 +166,17 @@ class Instructions:
         addr, _ = self._resolve_addressing_mode(addr)
         data = int(self.op.memory_read(addr))
         data_bin = format(data, "08b")
-        
+
         # Get current carry flag
         old_carry = 1 if self.flags.CY else 0
-        
+
         # Rotate left through carry
         new_carry = int(data_bin[0])  # MSB becomes new carry
         rotated_data = data_bin[1:] + str(old_carry)  # Shift left and add old carry
-        
+
         # Update carry flag
         self.flags.CY = bool(new_carry)
-        
+
         # Write back rotated data
         data_new = format(int(rotated_data, 2), "#02x")
         return self.op.memory_write(addr, data_new)
@@ -186,17 +186,17 @@ class Instructions:
         addr, _ = self._resolve_addressing_mode(addr)
         data = int(self.op.memory_read(addr))
         data_bin = format(data, "08b")
-        
+
         # Get current carry flag
         old_carry = 1 if self.flags.CY else 0
-        
+
         # Rotate right through carry
         new_carry = int(data_bin[-1])  # LSB becomes new carry
         rotated_data = str(old_carry) + data_bin[:-1]  # Add old carry and shift right
-        
+
         # Update carry flag
         self.flags.CY = bool(new_carry)
-        
+
         # Write back rotated data
         data_new = format(int(rotated_data, 2), "#02x")
         return self.op.memory_write(addr, data_new)
@@ -251,11 +251,11 @@ class Instructions:
         a_val = int(self.op.memory_read("A"))
         b_val = int(self.op.memory_read("B"))
         result = a_val * b_val
-        
+
         # Store low byte in A, high byte in B
         self.op.memory_write("A", f"0x{result & 0xFF:02x}")
         self.op.memory_write("B", f"0x{(result >> 8) & 0xFF:02x}")
-        
+
         # Set overflow flag if result > 255
         self.flags.OV = result > 255
         self.flags.CY = False
@@ -277,11 +277,11 @@ class Instructions:
         # XCH is typically between A and another register/memory location
         if addr_1.upper() != "A":
             addr_1, addr_2 = addr_2, addr_1  # Ensure A is first
-        
+
         addr_2, _ = self._resolve_addressing_mode(addr_2)
         a_val = self.op.memory_read("A")
         data_val = self.op.memory_read(addr_2)
-        
+
         # Swap the values
         self.op.memory_write("A", data_val)
         self.op.memory_write(addr_2, a_val)
@@ -292,14 +292,14 @@ class Instructions:
         addr, _ = self._resolve_addressing_mode(addr)
         a_val = int(self.op.memory_read("A"))
         data_val = int(self.op.memory_read(addr))
-        
+
         # Exchange low nibbles (lower 4 bits)
         a_low = a_val & 0x0F
         data_low = data_val & 0x0F
-        
+
         new_a = (a_val & 0xF0) | data_low
         new_data = (data_val & 0xF0) | a_low
-        
+
         self.op.memory_write("A", f"0x{new_a:02x}")
         self.op.memory_write(addr, f"0x{new_data:02x}")
         return True
@@ -308,12 +308,12 @@ class Instructions:
         """Swap nibbles in accumulator"""
         addr, _ = self._resolve_addressing_mode(addr)
         data = int(self.op.memory_read(addr))
-        
+
         # Swap high and low nibbles
         high_nibble = (data >> 4) & 0x0F
         low_nibble = data & 0x0F
         swapped = (low_nibble << 4) | high_nibble
-        
+
         return self.op.memory_write(addr, f"0x{swapped:02x}")
 
     def da(self, addr: str) -> bool:
@@ -441,10 +441,10 @@ class Instructions:
         current_pc = int(self.op.super_memory.PC.read())
         high_pc = (current_pc >> 8) & 0xFF
         low_pc = current_pc & 0xFF
-        
+
         self.op.super_memory.SP.write(f"0x{high_pc:02x}")
         self.op.super_memory.SP.write(f"0x{low_pc:02x}")
-        
+
         # Jump to target address (simplified - ignoring 2K page restrictions)
         return self.op.super_memory.PC(addr)
 
@@ -454,10 +454,10 @@ class Instructions:
         current_pc = int(self.op.super_memory.PC.read())
         high_pc = (current_pc >> 8) & 0xFF
         low_pc = current_pc & 0xFF
-        
+
         self.op.super_memory.SP.write(f"0x{high_pc:02x}")
         self.op.super_memory.SP.write(f"0x{low_pc:02x}")
-        
+
         # Jump to target address
         return self.op.super_memory.PC(addr)
 
@@ -467,7 +467,7 @@ class Instructions:
         low_pc = int(self.op.super_memory.SP.read())
         high_pc = int(self.op.super_memory.SP.read())
         return_addr = (high_pc << 8) | low_pc
-        
+
         return self.op.super_memory.PC(f"0x{return_addr:04x}")
 
     def reti(self) -> bool:

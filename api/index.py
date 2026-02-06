@@ -32,7 +32,6 @@ def _get_ram_and_rom():
 
 @app.route("/reset", methods=["POST"])
 def reset():
-    global controller
     controller.reset()
     ram, rom = _get_ram_and_rom()
     return {
@@ -49,7 +48,6 @@ def reset():
 
 @app.route("/assemble", methods=["POST"])
 def assemble():
-    global controller
     commands_json = request.data
     if commands_json:
         commands_dict = json.loads(commands_json)
@@ -70,7 +68,6 @@ def assemble():
 
 @app.route("/run", methods=["POST"])
 def run():
-    global controller
     print(controller.ready)
     if controller.ready:
         try:
@@ -96,7 +93,6 @@ def run():
 
 @app.route("/run-once", methods=["POST"])
 def step():
-    global controller
     print(controller.ready)
     if controller.ready:
         try:
@@ -121,7 +117,6 @@ def step():
 
 @app.route("/memory-edit", methods=["POST"])
 def update_memory():
-    global controller
     mem_data = request.data
     if mem_data:
         mem_data = json.loads(mem_data)
@@ -151,7 +146,6 @@ def update_memory():
 
 @app.route("/", methods=["GET"])
 def main():
-    global controller
     controller = Controller()
     ram, rom = _get_ram_and_rom()
     return render_template(
